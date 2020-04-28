@@ -100,14 +100,11 @@ func (p *Parser) parseString() (String, error) {
 
 	// parse string value
 	bs := make([]byte, length)
-	n, err := p.reader.Read(bs)
+	n, err := io.ReadFull(p.reader, bs)
 	if err != nil {
-		return String(""), &ErrSyntax{pos: p.offset, msg: "cannot parse string"}
-	}
-	p.offset += int64(n)
-	if n != int(length) {
 		return String(""), &ErrSyntax{pos: p.offset, msg: "string length is wrong"}
 	}
+	p.offset += int64(n)
 
 	return String(bs), nil
 }
