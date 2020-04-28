@@ -11,7 +11,9 @@ Work in progres.
     - [ ] into struct:
         - [ ] match field by it's name
         - [x] match field by tag
+        - [ ] support references
     - [x] as raw bencode
 - encode:
     - [ ] argument of type T
     - [ ] struct
+- [ ] support all types of int
